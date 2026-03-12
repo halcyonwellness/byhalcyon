@@ -137,9 +137,9 @@
       transform: translateY(14px);
       filter: blur(6px);
       transition:
-        opacity 900ms cubic-bezier(.2,.8,.2,1),
-        transform 900ms cubic-bezier(.2,.8,.2,1),
-        filter 900ms cubic-bezier(.2,.8,.2,1);
+        opacity 1500ms cubic-bezier(.2,.8,.2,1),
+        transform 1500ms cubic-bezier(.2,.8,.2,1),
+        filter 1500ms cubic-bezier(.2,.8,.2,1);
       will-change: transform, opacity, filter;
     }
 
@@ -322,7 +322,7 @@
       const span = document.createElement("span");
       span.className = "char";
       span.textContent = letter;
-      span.style.transitionDelay = `${index * 90}ms`;
+      span.style.transitionDelay = `${index * 160}ms`;
       wordmark.appendChild(span);
     });
 
