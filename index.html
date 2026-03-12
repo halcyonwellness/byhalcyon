@@ -4,19 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Halcyon Wellness, Inc.</title>
-  <meta name="description" content="Halcyon Wellness, Inc. is building something quietly exceptional." />
+  <meta name="description" content="Halcyon Wellness, Inc." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #0b0a08;
-      --bg-soft: #15120f;
-      --panel: rgba(255, 248, 240, 0.04);
-      --panel-border: rgba(255, 240, 220, 0.10);
-      --text: #f6f1ea;
-      --muted: #c7b8a6;
-      --faint: rgba(255, 248, 240, 0.58);
-      --gold: #d7b27a;
-      --gold-soft: rgba(215, 178, 122, 0.18);
-      --shadow: rgba(0, 0, 0, 0.42);
+      --bg-1: #0a0f16;
+      --bg-2: #101827;
+      --bg-3: #1a1f2f;
+      --panel-border: rgba(190, 220, 255, 0.14);
+      --text: #f4f7fb;
+      --muted: rgba(244, 247, 251, 0.58);
+      --accent: #dce8f7;
+      --shadow: rgba(0, 0, 0, 0.45);
     }
 
     * {
@@ -30,205 +33,315 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
-      color: var(--text);
       min-height: 100vh;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(215, 178, 122, 0.09), transparent 28%),
-        radial-gradient(circle at 80% 75%, rgba(255, 255, 255, 0.03), transparent 24%),
-        linear-gradient(135deg, #080706 0%, #0f0d0b 45%, #17120f 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 28px;
+      padding: 24px;
+      color: var(--text);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(91, 162, 255, 0.18), transparent 28%),
+        radial-gradient(circle at 78% 24%, rgba(134, 114, 255, 0.12), transparent 24%),
+        radial-gradient(circle at 50% 82%, rgba(74, 180, 156, 0.14), transparent 30%),
+        linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 52%, var(--bg-3) 100%);
     }
 
-    .frame {
+    .shell {
       width: 100%;
       max-width: 980px;
-      border: 1px solid var(--panel-border);
-      border-radius: 30px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+      min-height: 78vh;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 32px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
       box-shadow: 0 30px 90px var(--shadow);
-      overflow: hidden;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       position: relative;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .frame::before {
+    .shell::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, transparent, rgba(215,178,122,0.06), transparent);
-      opacity: 0.6;
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 24%, transparent 76%, rgba(255,255,255,0.02));
       pointer-events: none;
     }
 
     .content {
       position: relative;
-      padding: 56px 48px 42px;
+      width: 100%;
+      max-width: 560px;
+      text-align: center;
+      padding: 48px 24px 68px;
     }
 
-    .topbar {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 64px;
-    }
-
-    .mark {
-      width: 54px;
-      height: 54px;
-      border-radius: 16px;
-      border: 1px solid rgba(215,178,122,0.28);
-      background: linear-gradient(180deg, rgba(215,178,122,0.10), rgba(255,255,255,0.02));
+    .mark-wrap {
+      width: 94px;
+      height: 94px;
+      margin: 0 auto 32px;
+      border-radius: 28px;
+      border: 1px solid var(--panel-border);
+      background:
+        radial-gradient(circle at 30% 25%, rgba(145, 190, 255, 0.18), transparent 45%),
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
       display: grid;
       place-items: center;
-      flex: 0 0 auto;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.05),
+        0 14px 34px rgba(0,0,0,0.22);
     }
 
-    .mark svg {
-      width: 24px;
-      height: 24px;
-      display: block;
+    .mark-letter {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: 50px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      transform: translateX(-0.03em) translateY(-0.02em);
+      background: linear-gradient(180deg, #f6fbff 0%, #d8e6f8 55%, #bdd4f5 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-rendering: geometricPrecision;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .company {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .company-name {
-      font-size: 14px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--faint);
-    }
-
-    .company-sub {
-      font-size: 12px;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: rgba(199, 184, 166, 0.72);
-    }
-
-    .hero {
-      max-width: 700px;
-    }
-
-    .eyebrow {
+    .wordmark-wrap {
+      position: relative;
       display: inline-block;
-      margin-bottom: 18px;
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold);
     }
 
-    h1 {
+    .wordmark {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 500;
-      font-size: clamp(44px, 8vw, 82px);
+      position: relative;
+      display: inline-block;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(44px, 7vw, 68px);
       line-height: 0.95;
       letter-spacing: -0.04em;
+      color: var(--text);
+      white-space: nowrap;
     }
 
-    .subhead {
-      margin-top: 24px;
-      max-width: 610px;
-      font-size: 19px;
-      line-height: 1.7;
+    .wordmark .char {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(14px);
+      filter: blur(6px);
+      transition:
+        opacity 900ms cubic-bezier(.2,.8,.2,1),
+        transform 900ms cubic-bezier(.2,.8,.2,1),
+        filter 900ms cubic-bezier(.2,.8,.2,1);
+      will-change: transform, opacity, filter;
+    }
+
+    .wordmark.is-visible .char {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    .wordmark-glow {
+      position: absolute;
+      inset: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(44px, 7vw, 68px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+      pointer-events: none;
+      color: transparent;
+      background: linear-gradient(
+        100deg,
+        rgba(255,255,255,0) 15%,
+        rgba(255,255,255,0.06) 35%,
+        rgba(255,255,255,0.72) 50%,
+        rgba(200,225,255,0.5) 55%,
+        rgba(255,255,255,0.05) 70%,
+        rgba(255,255,255,0) 85%
+      );
+      background-size: 220% 100%;
+      background-position: 140% 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      opacity: 0;
+    }
+
+    .wordmark-glow.is-shimmering {
+      animation: shimmerPass 2200ms cubic-bezier(.2,.7,.2,1);
+    }
+
+    @keyframes shimmerPass {
+      0% {
+        opacity: 0;
+        background-position: 140% 0;
+      }
+      12% {
+        opacity: 0.9;
+      }
+      55% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        background-position: -40% 0;
+      }
+    }
+
+    .sub {
+      margin-top: 14px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       color: var(--muted);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 800ms ease, transform 800ms ease;
+      transition-delay: 600ms;
+    }
+
+    .sub.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .rule {
-      width: 100%;
+      width: 72px;
       height: 1px;
-      margin: 44px 0 24px;
-      background: linear-gradient(90deg, rgba(215,178,122,0.22), rgba(255,255,255,0.08), transparent);
+      margin: 26px auto 0;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transform: scaleX(0.75);
+      transition: opacity 900ms ease, transform 900ms ease;
+      transition-delay: 850ms;
+    }
+
+    .rule.is-visible {
+      opacity: 0.75;
+      transform: scaleX(1);
     }
 
     .footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      color: rgba(199, 184, 166, 0.8);
-      font-size: 14px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 24px;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(244, 247, 251, 0.34);
+      padding: 0 20px;
+      opacity: 0;
+      transition: opacity 1000ms ease;
+      transition-delay: 1200ms;
     }
 
-    .footer a {
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(215,178,122,0.35);
-      padding-bottom: 2px;
-      transition: border-color 0.2s ease, opacity 0.2s ease;
+    .footer.is-visible {
+      opacity: 1;
     }
 
-    .footer a:hover {
-      border-color: rgba(215,178,122,0.8);
-      opacity: 0.92;
+    @media (prefers-reduced-motion: reduce) {
+      .wordmark .char,
+      .sub,
+      .rule,
+      .footer {
+        transition: none;
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+
+      .wordmark-glow {
+        display: none;
+      }
     }
 
-    @media (max-width: 700px) {
-      .content {
-        padding: 34px 24px 28px;
+    @media (max-width: 640px) {
+      .shell {
+        min-height: 84vh;
+        border-radius: 24px;
       }
 
-      .topbar {
-        margin-bottom: 44px;
+      .mark-wrap {
+        width: 80px;
+        height: 80px;
+        border-radius: 24px;
+        margin-bottom: 28px;
       }
 
-      .subhead {
-        font-size: 17px;
+      .mark-letter {
+        font-size: 42px;
       }
 
-      .mark {
-        width: 48px;
-        height: 48px;
-        border-radius: 14px;
+      .footer {
+        bottom: 18px;
+        font-size: 10px;
       }
     }
   </style>
 </head>
 <body>
-  <main class="frame">
+  <main class="shell">
     <section class="content">
-      <div class="topbar">
-        <div class="mark" aria-hidden="true">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 14V50" stroke="#D7B27A" stroke-width="3.2" stroke-linecap="round"/>
-            <path d="M46 14V50" stroke="#D7B27A" stroke-width="3.2" stroke-linecap="round"/>
-            <path d="M18 32H46" stroke="#D7B27A" stroke-width="3.2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="company">
-          <div class="company-name">Halcyon Wellness, Inc.</div>
-          <div class="company-sub">Private Company</div>
-        </div>
+      <div class="mark-wrap" aria-hidden="true">
+        <div class="mark-letter">H</div>
       </div>
 
-      <div class="hero">
-        <div class="eyebrow">Quietly in development</div>
-        <h1>Wellness, with a more refined point of view.</h1>
-        <p class="subhead">
-          Halcyon Wellness, Inc. is building a new kind of consumer wellness company.
-          Thoughtful, intentional, and designed with long horizons in mind.
-        </p>
+      <div class="wordmark-wrap">
+        <h1 class="wordmark" id="wordmark" aria-label="Halcyon"></h1>
+        <div class="wordmark-glow" id="wordmarkGlow" aria-hidden="true">Halcyon</div>
       </div>
 
-      <div class="rule"></div>
-
-      <div class="footer">
-        <div>© 2026 Halcyon Wellness, Inc.</div>
-      </div>
+      <div class="sub" id="subline">Halcyon Wellness, Inc.</div>
+      <div class="rule" id="rule"></div>
     </section>
+
+    <div class="footer" id="footer">© 2026</div>
   </main>
+
+  <script>
+    const brand = "Halcyon";
+    const wordmark = document.getElementById("wordmark");
+    const glow = document.getElementById("wordmarkGlow");
+    const subline = document.getElementById("subline");
+    const rule = document.getElementById("rule");
+    const footer = document.getElementById("footer");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    brand.split("").forEach((letter, index) => {
+      const span = document.createElement("span");
+      span.className = "char";
+      span.textContent = letter;
+      span.style.transitionDelay = `${index * 90}ms`;
+      wordmark.appendChild(span);
+    });
+
+    requestAnimationFrame(() => {
+      wordmark.classList.add("is-visible");
+      subline.classList.add("is-visible");
+      rule.classList.add("is-visible");
+      footer.classList.add("is-visible");
+    });
+
+    function shimmer() {
+      if (reduceMotion) return;
+      glow.classList.remove("is-shimmering");
+      void glow.offsetWidth;
+      glow.classList.add("is-shimmering");
+    }
+
+    setTimeout(shimmer, 1800);
+    wordmark.addEventListener("mouseenter", shimmer);
+  </script>
 </body>
 </html>
