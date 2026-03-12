@@ -3,106 +3,232 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Halcyon</title>
-  <meta name="description" content="Halcyon is coming soon." />
+  <title>Halcyon Wellness, Inc.</title>
+  <meta name="description" content="Halcyon Wellness, Inc. is building something quietly exceptional." />
   <style>
     :root {
-      --bg: #0b1020;
-      --card: rgba(255,255,255,0.08);
-      --text: #f5f7fb;
-      --muted: #b8c0d9;
-      --accent: #9dd6ff;
-      --border: rgba(255,255,255,0.12);
+      --bg: #0b0a08;
+      --bg-soft: #15120f;
+      --panel: rgba(255, 248, 240, 0.04);
+      --panel-border: rgba(255, 240, 220, 0.10);
+      --text: #f6f1ea;
+      --muted: #c7b8a6;
+      --faint: rgba(255, 248, 240, 0.58);
+      --gold: #d7b27a;
+      --gold-soft: rgba(215, 178, 122, 0.18);
+      --shadow: rgba(0, 0, 0, 0.42);
     }
 
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(107,170,255,0.18), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(119,255,214,0.12), transparent 30%),
-        var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
       color: var(--text);
       min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(215, 178, 122, 0.09), transparent 28%),
+        radial-gradient(circle at 80% 75%, rgba(255, 255, 255, 0.03), transparent 24%),
+        linear-gradient(135deg, #080706 0%, #0f0d0b 45%, #17120f 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 28px;
     }
 
-    .card {
+    .frame {
       width: 100%;
-      max-width: 760px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 56px 40px;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-      text-align: center;
+      max-width: 980px;
+      border: 1px solid var(--panel-border);
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+      box-shadow: 0 30px 90px var(--shadow);
+      overflow: hidden;
+      position: relative;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent, rgba(215,178,122,0.06), transparent);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      padding: 56px 48px 42px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+
+    .mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      border: 1px solid rgba(215,178,122,0.28);
+      background: linear-gradient(180deg, rgba(215,178,122,0.10), rgba(255,255,255,0.02));
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .mark svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    .company {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .company-name {
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .company-sub {
+      font-size: 12px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(199, 184, 166, 0.72);
+    }
+
+    .hero {
+      max-width: 700px;
     }
 
     .eyebrow {
       display: inline-block;
       margin-bottom: 18px;
-      padding: 8px 12px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--accent);
-      font-size: 13px;
-      letter-spacing: 0.08em;
+      font-size: 12px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
+      color: var(--gold);
     }
 
     h1 {
-      margin: 0 0 14px;
-      font-size: clamp(42px, 8vw, 76px);
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: clamp(44px, 8vw, 82px);
       line-height: 0.95;
       letter-spacing: -0.04em;
     }
 
-    p {
-      margin: 0 auto;
-      max-width: 560px;
-      font-size: 18px;
-      line-height: 1.6;
+    .subhead {
+      margin-top: 24px;
+      max-width: 610px;
+      font-size: 19px;
+      line-height: 1.7;
       color: var(--muted);
     }
 
-    .cta {
-      margin-top: 32px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 14px 20px;
-      border-radius: 12px;
-      background: #ffffff;
-      color: #0b1020;
-      text-decoration: none;
-      font-weight: 600;
+    .rule {
+      width: 100%;
+      height: 1px;
+      margin: 44px 0 24px;
+      background: linear-gradient(90deg, rgba(215,178,122,0.22), rgba(255,255,255,0.08), transparent);
     }
 
     .footer {
-      margin-top: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: rgba(199, 184, 166, 0.8);
       font-size: 14px;
-      color: var(--muted);
-      opacity: 0.8;
+    }
+
+    .footer a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(215,178,122,0.35);
+      padding-bottom: 2px;
+      transition: border-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .footer a:hover {
+      border-color: rgba(215,178,122,0.8);
+      opacity: 0.92;
+    }
+
+    @media (max-width: 700px) {
+      .content {
+        padding: 34px 24px 28px;
+      }
+
+      .topbar {
+        margin-bottom: 44px;
+      }
+
+      .subhead {
+        font-size: 17px;
+      }
+
+      .mark {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="card">
-    <div class="eyebrow">Coming Soon</div>
-    <h1>Halcyon</h1>
-    <p>
-      A new brand is taking shape. We’re building thoughtful products for better living.
-    </p>
-    <div class="cta">
-      <a class="button" href="mailto:hello@yourdomain.com">Contact Us</a>
-    </div>
-    <div class="footer">© 2026 Halcyon. All rights reserved.</div>
+  <main class="frame">
+    <section class="content">
+      <div class="topbar">
+        <div class="mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 14V50" stroke="#D7B27A" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M46 14V50" stroke="#D7B27A" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M18 32H46" stroke="#D7B27A" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="company">
+          <div class="company-name">Halcyon Wellness, Inc.</div>
+          <div class="company-sub">Private Company</div>
+        </div>
+      </div>
+
+      <div class="hero">
+        <div class="eyebrow">Quietly in development</div>
+        <h1>Wellness, with a more refined point of view.</h1>
+        <p class="subhead">
+          Halcyon Wellness, Inc. is building a new kind of consumer wellness company.
+          Thoughtful, intentional, and designed with long horizons in mind.
+        </p>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="footer">
+        <div>© 2026 Halcyon Wellness, Inc.</div>
+      </div>
+    </section>
   </main>
 </body>
 </html>
