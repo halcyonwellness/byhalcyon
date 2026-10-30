@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,458 +7,1219 @@
 <title>Halcyon — The Future of Liver Wellness</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --blue: #2f5fe0;
     --blue-deep: #1e47bf;
-    --blue-dark: #14276b;
     --cream: #f7f2e8;
-    --ink: #0e1a3a;
-    --muted: #4a5578;
+    --white: #ffffff;
+    --ink: #14203f;
+    --muted: #6b7290;
+    --line: rgba(20,32,63,0.12);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'Inter', -apple-system, sans-serif;
     background: var(--cream);
     color: var(--ink);
-    line-height: 1.6;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
   }
-
+  a { color: inherit; }
   .display {
     font-family: 'Crimson Text', Georgia, serif;
     font-weight: 400;
     letter-spacing: -0.01em;
-    line-height: 1.05;
+  }
+  .label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
 
   /* ---------- NAV ---------- */
   nav {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    padding: 2rem 3rem;
+    position: relative;
+    z-index: 3;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
+    padding: 2rem 3rem;
   }
   nav .brand {
     font-family: 'Crimson Text', serif;
-    font-size: 1.75rem;
-    font-weight: 400;
-    color: white;
-    letter-spacing: 0.01em;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.01em;
+  }
+  nav .brand sup {
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-left: 0.15rem;
   }
   nav .nav-link {
-    color: rgba(255,255,255,0.85);
     text-decoration: none;
-    font-size: 0.875rem;
-    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    transition: color 0.2s;
+    color: rgba(255,255,255,0.7);
+    transition: color 0.2s ease;
   }
-  nav .nav-link:hover { color: white; }
+  nav .nav-link:hover { color: var(--white); }
 
   /* ---------- HERO ---------- */
   .hero {
     position: relative;
-    min-height: 100vh;
-    background: var(--blue);
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: 8rem 3rem 6rem;
+    z-index: 1;
+    background: linear-gradient(135deg, #163e9e 0%, #2f5fe0 55%, #3f6ff0 100%);
+    color: var(--white);
+    padding: 0 3rem 5rem;
     overflow: hidden;
   }
-
-  .hero-curves {
+  .hero-bg-lines {
     position: absolute;
-    top: 0; right: 0;
-    width: 70%;
-    height: 100%;
-    pointer-events: none;
-  }
-  .hero-curves svg {
+    inset: 0;
     width: 100%;
     height: 100%;
-  }
-
-  .hero-orb {
-    position: absolute;
-    bottom: -120px;
-    left: -120px;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.06);
     pointer-events: none;
   }
-
   .hero-content {
     position: relative;
-    max-width: 900px;
     z-index: 2;
   }
-
   .eyebrow {
     display: inline-block;
     font-size: 0.75rem;
-    letter-spacing: 0.25em;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.7);
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--white);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 999px;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease-out 0.2s forwards;
-  }
-
-  .hero h1 {
-    font-size: clamp(3rem, 7vw, 6.5rem);
-    margin-bottom: 1.5rem;
-    font-style: normal;
-    opacity: 0;
-    animation: fadeUpSlow 1s ease-out 0.4s forwards;
-  }
-  .hero h1 em {
-    font-style: normal;
-    font-weight: 300;
-    color: rgba(255,255,255,0.75);
-    position: relative;
-  }
-  .hero h1 em::after {
-    content: '';
-    position: absolute;
-    bottom: 0.1em;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: rgba(255,255,255,0.4);
-  }
-
-  .hero-sub {
-    font-size: 1.25rem;
-    max-width: 560px;
-    color: rgba(255,255,255,0.8);
-    font-weight: 300;
+    padding: 0.45rem 1rem;
     margin-bottom: 2.5rem;
     opacity: 0;
-    animation: fadeUp 0.8s ease-out 0.8s forwards;
+    animation: fadeUp 0.7s ease-out 0.1s forwards;
   }
-
-  .scroll-hint {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    opacity: 0;
-    animation: fadeUp 0.6s ease-out 1.2s forwards, bob 2.5s ease-in-out 2s infinite;
-  }
-
-  /* ---------- SPIEL ---------- */
-  .spiel {
-    padding: 9rem 3rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .section-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--blue);
-    margin-bottom: 2rem;
-  }
-
-  .spiel h2 {
-    font-size: clamp(2.5rem, 5vw, 4.25rem);
-    color: var(--blue-deep);
-    margin-bottom: 3rem;
+  .hero h1 {
+    font-size: clamp(2.75rem, 6.5vw, 5.5rem);
+    line-height: 1.05;
     max-width: 900px;
+    margin-bottom: 1.75rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.3s forwards;
   }
-  .spiel h2 em { 
-    font-style: normal;
-    color: var(--blue);
+  .hero h1 em {
+    font-style: italic;
     font-weight: 400;
+    color: rgba(255,255,255,0.8);
+  }
+  .hero-sub {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.1875rem;
+    font-weight: 300;
+    max-width: 560px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.65;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.5s forwards;
+  }
+  .proof-stat {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin-bottom: 2.5rem;
+    padding-left: 1.1rem;
+    border-left: 3px solid var(--white);
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.58s forwards;
+  }
+  .proof-stat-num {
+    font-family: 'Crimson Text', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    line-height: 1;
+  }
+  .proof-stat-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .proof-stat-text strong {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .proof-stat-text span {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.65);
+  }
+  .cta-row {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.65s forwards;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    gap: 0.6rem;
+    padding: 1rem 2.25rem;
+    text-decoration: none;
+    font-family: 'Crimson Text', serif;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .btn-primary {
+    background: var(--white);
+    color: var(--blue-deep);
+    border-color: var(--white);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    max-width: 900px;
+    margin-top: 4rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 1.25s forwards;
+  }
+  .hero-meta .label { color: rgba(255,255,255,0.55); }
+
+  /* ---------- PRODUCTS (inline, dark hero) ---------- */
+  .products-header {
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.95s forwards;
+  }
+  .products-title {
+    font-family: 'Crimson Text', serif;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--white);
+  }
+  .products-category {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
+    background: var(--white);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+  }
+  .pillar-tag {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.4rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
+    background: var(--white);
+    border-radius: 999px;
+    padding: 0.3rem 0.65rem;
+  }
+  .pillars-inline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    max-width: 950px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 1.05s forwards;
+  }
+  .pillar-inline .pillar-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: var(--white);
+    font-family: 'Crimson Text', serif;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    margin-bottom: 1.25rem;
+  }
+  .pillar-inline h3 {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+  }
+  .pillar-inline p {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.7);
   }
 
-  .spiel-body {
+  /* ---------- VISION ---------- */
+  .vision {
+    position: relative;
+    z-index: 2;
+    background: var(--cream);
+    color: var(--ink);
+    border-radius: 28px 28px 0 0;
+    padding: 6.5rem 3rem 5rem;
+    box-shadow: 0 -30px 60px rgba(20,32,63,0.18);
+    transform: translateY(70px);
+    opacity: 0;
+    transition: transform 0.9s cubic-bezier(.16,.84,.44,1), opacity 0.9s ease;
+    margin-top: -28px;
+  }
+  .vision.is-visible { transform: translateY(0); opacity: 1; }
+  .vision-inner { max-width: 1150px; margin: 0 auto; }
+  .vision-label { color: var(--blue); margin-bottom: 1.5rem; }
+  .vision h2 {
+    font-family: 'Crimson Text', serif;
+    font-size: clamp(2rem, 4.2vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    max-width: 780px;
+    margin-bottom: 3rem;
+    color: var(--blue-deep);
+  }
+  .vision h2 em { font-style: italic; font-weight: 400; color: var(--blue); }
+  .vision-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     max-width: 1000px;
   }
-  .spiel-body p {
-    font-size: 1.125rem;
+  .vision-body p {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.0625rem;
     color: var(--muted);
     font-weight: 300;
-    line-height: 1.75;
+    line-height: 1.8;
   }
-  .spiel-body p strong {
-    color: var(--ink);
-    font-weight: 500;
-  }
+  .vision-body p strong { color: var(--ink); font-weight: 600; }
+  .vision-cta { margin-top: 3.5rem; }
+  .btn-blue { background: var(--blue-deep); color: var(--white); border-color: var(--blue-deep); }
+  .btn-blue:hover { background: transparent; color: var(--blue-deep); }
 
-  /* ---------- PILLARS ---------- */
-  .pillars {
-    background: white;
-    padding: 7rem 3rem;
-    border-top: 1px solid rgba(20,39,107,0.08);
-    border-bottom: 1px solid rgba(20,39,107,0.08);
-  }
-  .pillars-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-  }
-  .pillar {
+  /* ---------- EMBEDDED SIGNUP SECTION ---------- */
+  .hc-signup-section {
     position: relative;
-  }
-  .pillar-num {
-    font-family: 'Crimson Text', serif;
-    font-size: 3rem;
-    font-weight: 400;
-    color: var(--blue);
-    font-style: italic;
-    margin-bottom: 1rem;
-    line-height: 1;
-  }
-  .pillar h3 {
-    font-family: 'Crimson Text', serif;
-    font-weight: 400;
-    font-size: 1.5rem;
-    color: var(--ink);
-    margin-bottom: 0.75rem;
-  }
-  .pillar p {
-    color: var(--muted);
-    font-size: 0.95rem;
-    font-weight: 300;
-  }
-
-  /* ---------- CONTACT ---------- */
-  .contact {
-    position: relative;
-    background: var(--blue);
-    color: white;
-    padding: 9rem 3rem;
-    text-align: center;
-    overflow: hidden;
-  }
-
-  .contact-curves {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.35;
-  }
-
-  .contact-inner {
-    position: relative;
-    max-width: 700px;
-    margin: 0 auto;
     z-index: 2;
+    background: var(--cream);
+    color: var(--ink);
+    padding: 0 3rem 5rem;
+  }
+  .btn:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+
+
+  /* ---------- WIDE SCREENS ---------- */
+  .hero nav { max-width: 1200px; margin: 0 auto; padding-left: 0; padding-right: 0; }
+  .hero-content { max-width: 1200px; margin: 0 auto; }
+  .hero h1, .hero-meta, .pillars-inline { max-width: none; }
+  .vision-inner { max-width: 1200px; }
+  @media (min-width: 1000px) {
+    .hero-content {
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+      column-gap: 4rem;
+      align-items: start;
+    }
+    .hero-content > * { grid-column: 1 / -1; }
+    .hero-content > .eyebrow { justify-self: start; margin-top: 1.5rem; }
+    .hero h1 { font-size: clamp(2.75rem, 5.4vw, 5rem); }
+    .footer-row, footer .disclaimer { max-width: 1200px; margin-left: auto; margin-right: auto; }
+    body .rule { max-width: 1200px; width: calc(100% - 6rem); margin: 0 auto; }
+    .hero-content > .hero-sub { grid-column: 1; max-width: 560px; }
+    .hero-content > .cta-row { grid-column: 1; }
+    .hero-content > h1 { grid-column: 1; }
+    .hero-content > .proof-stat {
+      grid-column: 2;
+      grid-row: 2 / span 3;
+      align-self: center;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      margin: 0;
+      padding: 2.5rem 2.5rem 2.5rem 2.25rem;
+      border-left: 0;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.08);
+    }
+    .hero-content > .proof-stat .proof-stat-num { font-size: clamp(5rem, 9vw, 8rem); }
+    .hero-content > .proof-stat .proof-stat-text strong { font-size: 1.25rem; }
+    .hero-content > .proof-stat .proof-stat-text span { font-size: 0.9375rem; }
   }
 
-  .contact h2 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 1.5rem;
-  }
-  .contact h2 em { 
-    font-style: normal; 
-    color: rgba(255,255,255,0.85);
-  }
 
-  .contact p {
-    font-size: 1.125rem;
-    color: rgba(255,255,255,0.8);
-    max-width: 500px;
-    margin: 0 auto 3rem;
-    font-weight: 300;
-  }
+  @media (min-width: 1000px) {
+    .vision-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      column-gap: 5rem;
+      grid-template-rows: auto 1fr;
+      align-items: start;
+    }
+    .vision-inner > .vision-label,
+    .vision-inner > h2 { grid-column: 1; }
+    .vision-inner > h2 { max-width: none; margin-bottom: 0; font-size: clamp(2.5rem, 4.4vw, 4rem); }
+    .vision-inner > .vision-body {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      max-width: none;
+      padding-top: 2.25rem;
+    }
+    .vision-body p { font-size: 1.1875rem; }
 
-  .cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1.125rem 2.5rem;
-    background: white;
-    color: var(--blue-deep);
-    text-decoration: none;
-    font-family: 'Crimson Text', serif;
-    font-size: 1.125rem;
-    border-radius: 999px;
-    transition: all 0.3s cubic-bezier(.2,.8,.2,1);
-    border: 1px solid white;
-  }
-  .cta:hover {
-    background: transparent;
-    color: white;
-    transform: translateY(-2px);
-  }
-  .cta svg {
-    width: 16px;
-    height: 16px;
-    transition: transform 0.3s;
-  }
-  .cta:hover svg { transform: translateX(4px); }
-
-  .contact-email {
-    display: block;
-    margin-top: 2rem;
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.6);
-    letter-spacing: 0.05em;
+    .hc-signup-section .hc-signup { max-width: 1200px; padding: 4.5rem 4rem; border-radius: 32px; }
+    .hc-signup-section .hc-signup .hc-inputs {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      column-gap: 5rem;
+      grid-template-rows: auto auto 1fr;
+    }
+    .hc-signup-section .hc-signup .hc-eyebrow { grid-column: 1; grid-row: 1; }
+    .hc-signup-section .hc-signup .hc-inputs > h2 {
+      grid-column: 1; grid-row: 2; max-width: none; margin: 0;
+      font-size: clamp(2.5rem, 4vw, 3.75rem);
+    }
+    .hc-signup-section .hc-signup .hc-top { grid-column: 2; grid-row: 1 / span 2; }
+    .hc-signup-section .hc-signup .hc-more { grid-column: 2; grid-row: 3; }
   }
 
   /* ---------- FOOTER ---------- */
   footer {
+    position: relative;
+    z-index: 2;
     background: var(--cream);
-    padding: 2.5rem 3rem;
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--muted);
-    letter-spacing: 0.05em;
+    padding: 2rem 3rem;
   }
+  .footer-row { display: flex; justify-content: space-between; align-items: center; }
+  footer .label { color: var(--muted); }
+  .disclaimer { margin-top: 0.75rem; font-size: 0.6875rem; color: var(--muted); opacity: 0.75; }
+  .rule { height: 1px; background: var(--line); margin: 0 3rem; }
 
   /* ---------- ANIMATIONS ---------- */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(22px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeUpSlow {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes bob {
-    0%, 100% { transform: translate(-50%, 0); }
-    50% { transform: translate(-50%, 8px); }
-  }
-  @keyframes slideInRight {
-    from { opacity: 0; transform: translateX(100px); }
-    to { opacity: 1; transform: translateX(0); }
   }
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 768px) {
-    nav { padding: 1.5rem; }
-    nav .nav-link { display: none; }
-    .hero, .contact { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .spiel { padding: 5rem 1.5rem; }
-    .pillars { padding: 5rem 1.5rem; }
-    .spiel-body { grid-template-columns: 1fr; gap: 2rem; }
-    .pillars-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-curves { width: 100%; opacity: 0.4; }
+    nav, .hero, .vision, footer, .hc-signup-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .rule { margin: 0 1.5rem; }
+    .vision-body { grid-template-columns: 1fr; gap: 2rem; }
+    .pillars-inline { grid-template-columns: 1fr; gap: 2rem; }
+    .products-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .vision { border-radius: 0; box-shadow: none; }
+    .footer-row { flex-wrap: wrap; gap: 1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .eyebrow, .hero h1, .hero-sub, .proof-stat, .cta-row,
+    .hero-meta, .products-header, .pillars-inline, .vision {
+      animation: none; transition: none; opacity: 1; transform: none;
+    }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="brand">Halcyon</div>
-  <a href="#contact" class="nav-link">Get in touch</a>
-</nav>
+<div class="hero">
+  <svg class="hero-bg-lines" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+    <path d="M -100 700 Q 300 500 700 620 T 1700 500" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <path d="M -100 760 Q 300 560 700 680 T 1700 560" stroke="rgba(255,255,255,0.09)" stroke-width="1.5"/>
+    <path d="M 1000 -100 Q 1300 250 1150 500 T 1250 950" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+    <path d="M 1080 -100 Q 1380 250 1230 500 T 1330 950" stroke="rgba(255,255,255,0.09)" stroke-width="1.2"/>
+  </svg>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-orb"></div>
-  <div class="hero-curves" aria-hidden="true">
-    <svg viewBox="0 0 800 900" preserveAspectRatio="none" fill="none">
-      <path d="M 550 -50 Q 700 300 600 550 T 500 950" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
-      <path d="M 600 -50 Q 750 300 650 550 T 550 950" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-      <path d="M 650 -50 Q 800 300 700 550 T 600 950" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-    </svg>
-  </div>
+  <nav>
+    <div class="brand">halcyon<sup>®</sup></div>
+    <a href="mailto:hello@byhalcyon.com" class="nav-link">Get in Touch</a>
+  </nav>
 
   <div class="hero-content">
-    <span class="eyebrow">Bioengineered Liver Wellness</span>
+    <span class="eyebrow">Coming Soon</span>
     <h1 class="display">The future of <em>liver wellness</em> starts here.</h1>
     <p class="hero-sub">
-      Halcyon is building the first generation of wellness products designed by biotech — helping your liver perform the way it was meant to.
+      Halcyon is building the first generation of liver wellness products designed by biotech, starting with reducing the impact of hangovers.
     </p>
-  </div>
 
-  <div class="scroll-hint">Scroll</div>
+    <div class="proof-stat">
+      <span class="proof-stat-num">2×</span>
+      <div class="proof-stat-text">
+        <strong>Faster alcohol clearance</strong>
+        <span>Proven in human clinical trials</span>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="#halcyon-email-signup" class="btn btn-primary">Join the Mailing List</a>
+    </div>
+
+    <div class="products-header">
+      <h2 class="products-title">Product Family</h2>
+    </div>
+
+    <div class="pillars-inline">
+      <div class="pillar-inline">
+        <div class="pillar-num">01</div>
+        <h3>Afters and Undrunk <span class="pillar-tag">Alcohol &amp; Liver Support</span></h3>
+        <p>On-demand elixirs that dramatically accelerate alcohol clearance while protecting the liver.</p>
+      </div>
+      <div class="pillar-inline">
+        <div class="pillar-num">02</div>
+        <h3>Always</h3>
+        <p>A daily companion that strengthens the liver's natural resilience during medication use.</p>
+      </div>
+      <div class="pillar-inline">
+        <div class="pillar-num">03</div>
+        <h3>Longevity</h3>
+        <p>A full wellness suite designed to extend liver health, and with it, healthy lifespan.</p>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <span class="label">Proven in People</span>
+    </div>
+  </div>
+</div>
+
+<!-- VISION -->
+<section class="vision">
+  <div class="vision-inner">
+    <div class="label vision-label">The Vision</div>
+    <h2 class="display">A new category of wellness, built on <em>real science</em>.</h2>
+    <div class="vision-body">
+      <p>
+        Modern life asks the liver to do the impossible: process every drink, every medication and every toxin, without a break. Today, <strong>1 in 4 adults show early signs of liver strain</strong>.
+      </p>
+      <p>
+        Halcyon replaces symptom-masking supplements with <strong>mechanistic, human-proven interventions</strong> engineered through computational biology — starting with alcohol clearance, expanding to medication resilience, and ultimately to liver longevity for life.
+      </p>
+    </div>
+  </div>
 </section>
 
-<!-- SPIEL -->
-<section class="spiel">
-  <div class="section-label">The vision</div>
-  <h2 class="display">A new category of wellness, built on <em>real science</em>.</h2>
+<!-- MAILING LIST: custom Klaviyo embed. Add a verified privacy-policy link before publishing. -->
+<section class="hc-signup-section" aria-label="Join the Halcyon mailing list">
+<style>
+  .hc-signup,
+  .hc-signup * {
+    box-sizing: border-box;
+  }
 
-  <div class="spiel-body">
-    <p>
-      For thousands of years, humanity has asked the liver to do the impossible — process every drink, every medication, every toxin that passes through modern life. Today, <strong>1 in 4 adults already shows early signs of liver strain</strong>, yet the wellness aisle is still full of detox teas and untested herbs.
+  .hc-signup {
+    --hc-blue: #2f5fe0;
+    --hc-deep: #1e47bf;
+    --hc-cream: #f7f2e8;
+    --hc-ink: #14203f;
+    --hc-muted: #6b7290;
+    --hc-line: rgba(20, 32, 63, 0.12);
+
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px;
+    background: var(--hc-cream);
+    color: var(--hc-ink);
+    border: 1px solid var(--hc-line);
+    border-radius: 28px;
+    font: 400 16px/1.5 "Inter", -apple-system, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    scroll-margin-top: 32px;
+  }
+
+  .hc-signup .hc-eyebrow {
+    margin: 0 0 20px;
+    color: var(--hc-deep);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .hc-signup h2 {
+    max-width: 620px;
+    margin: 0 0 32px;
+    color: var(--hc-deep);
+    font: 400 clamp(32px, 4.2vw, 48px)/1.15
+      "Crimson Text", Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+
+  .hc-signup .hc-field {
+    display: block;
+    margin: 0 0 24px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .hc-signup .hc-text {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    margin: 10px 0 0;
+    padding: 13px 16px;
+    border: 1px solid rgba(20, 32, 63, 0.25);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--hc-ink);
+    font: 400 16px/1.5 "Inter", -apple-system, Arial, sans-serif;
+    transition: border-color 0.2s ease;
+  }
+
+  .hc-signup .hc-text:hover {
+    border-color: var(--hc-deep);
+  }
+
+  .hc-signup .hc-names {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .hc-signup fieldset {
+    min-width: 0;
+    margin: 0 0 28px;
+    padding: 24px 0 0;
+    border: 0;
+    border-top: 1px solid var(--hc-line);
+  }
+
+  .hc-signup legend {
+    float: left;
+    width: 100%;
+    margin: 0 0 12px;
+    padding: 0;
+    color: var(--hc-ink);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .hc-signup fieldset::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .hc-signup legend + .hc-choice,
+  .hc-signup legend + .hc-note {
+    clear: both;
+  }
+
+  .hc-signup .hc-choice {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    margin: 0;
+    padding: 6px 0;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  .hc-signup input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    flex-shrink: 0;
+    accent-color: var(--hc-deep);
+    cursor: pointer;
+  }
+
+  .hc-signup input:disabled {
+    cursor: not-allowed;
+  }
+
+  .hc-signup input:disabled + span {
+    color: var(--hc-muted);
+  }
+
+  .hc-signup .hc-note {
+    margin: 0 0 16px;
+    color: var(--hc-muted);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  .hc-signup .hc-error {
+    margin: 12px 0 0;
+    color: var(--hc-ink);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .hc-signup button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-height: 50px;
+    margin: 0;
+    padding: 16px 36px;
+    border: 1px solid var(--hc-deep);
+    border-radius: 999px;
+    background: var(--hc-deep);
+    color: #fff;
+    font: 600 17px/1.4 "Crimson Text", Georgia, serif;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .hc-signup button:hover {
+    background: transparent;
+    color: var(--hc-deep);
+  }
+
+  .hc-signup button:active {
+    background: var(--hc-blue);
+    color: #fff;
+  }
+
+  .hc-signup button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+  }
+
+  .hc-signup :focus-visible {
+    outline: 3px solid var(--hc-deep);
+    outline-offset: 4px;
+  }
+
+  .hc-signup .hc-text[aria-invalid="true"] {
+    border: 2px solid var(--hc-deep);
+  }
+
+  .hc-signup a {
+    color: var(--hc-deep);
+    text-decoration: underline;
+  }
+
+  .hc-signup [hidden] {
+    display: none !important;
+  }
+
+  .hc-signup.hc-js .hc-more {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows 0.45s ease, visibility 0s linear 0.45s;
+  }
+
+  .hc-signup.hc-js.is-open .hc-more {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: grid-template-rows 0.45s ease, visibility 0s;
+  }
+
+  .hc-signup .hc-more-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .hc-signup .hc-success h2 {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .hc-signup {
+      padding: 32px 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hc-signup {
+      border-radius: 20px;
+    }
+
+    .hc-signup .hc-names {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .hc-signup button {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hc-signup *,
+    .hc-signup .hc-more {
+      transition: none !important;
+    }
+  }
+</style>
+
+<form
+  class="hc-signup"
+  id="halcyon-email-signup"
+  action="https://manage.kmail-lists.com/subscriptions/subscribe"
+  data-ajax-submit="https://manage.kmail-lists.com/ajax/subscriptions/subscribe"
+  method="POST"
+  novalidate
+>
+  <input type="hidden" name="g" value="TyZzwi">
+
+  <input
+    type="hidden"
+    name="$fields"
+    value="first_name,last_name,Halcyon Interests,Halcyon Occasions"
+  >
+
+  <input
+    type="hidden"
+    name="$list_fields"
+    value="Halcyon Interests,Halcyon Occasions"
+  >
+
+  <div class="hc-inputs">
+    <p class="hc-eyebrow">Join the Mailing List</p>
+    <h2>Stay in the loop with Halcyon</h2>
+
+    <div class="hc-top">
+    <label class="hc-field" for="hc-email">
+      Please provide your email to get on our mailing list *
+      <input
+        class="hc-text"
+        type="email"
+        id="hc-email"
+        name="email"
+        autocomplete="email"
+        inputmode="email"
+        autocapitalize="none"
+        spellcheck="false"
+        required
+        aria-describedby="hc-email-error"
+      >
+    </label>
+
+    <p
+      class="hc-error"
+      id="hc-email-error"
+      role="alert"
+      hidden
+    >
+      Please enter a valid email address, such as name@example.com.
     </p>
-    <p>
-      We think wellness deserves better. Halcyon replaces symptom-masking supplements with <strong>mechanistic, human-proven interventions</strong> engineered through computational biology — starting with alcohol clearance, expanding to medication resilience, and ultimately to liver longevity for life.
+
+    <p class="hc-error" id="hc-name-error" role="alert" hidden>
+      Please enter your first and last name.
     </p>
+
+    <div class="hc-names">
+      <label class="hc-field" for="hc-first">
+        First name *
+        <input
+          class="hc-text"
+          id="hc-first"
+          name="first_name"
+          autocomplete="given-name"
+          required
+        >
+      </label>
+
+      <label class="hc-field" for="hc-last">
+        Last name *
+        <input
+          class="hc-text"
+          id="hc-last"
+          name="last_name"
+          autocomplete="family-name"
+          required
+        >
+      </label>
+    </div>
+    </div>
+
+    <div class="hc-more"><div class="hc-more-inner">
+    <fieldset aria-describedby="hc-interest-hint hc-interest-error">
+      <legend>What do you want to hear from Halcyon about? *</legend>
+
+      <p class="hc-note" id="hc-interest-hint">Choose at least one.</p>
+
+      <label class="hc-choice">
+        <input
+          type="checkbox"
+          name="Halcyon Interests"
+          value="products we're developing"
+        >
+        <span>Products we're developing</span>
+      </label>
+
+      <label class="hc-choice">
+        <input
+          type="checkbox"
+          name="Halcyon Interests"
+          value="events"
+        >
+        <span>Events</span>
+      </label>
+
+      <label class="hc-choice">
+        <input
+          type="checkbox"
+          name="Halcyon Interests"
+          value="company updates"
+        >
+        <span>Company updates</span>
+      </label>
+      <p class="hc-error" id="hc-interest-error" role="alert" hidden>
+        Please select at least one topic.
+      </p>
+    </fieldset>
+
+    <fieldset
+      aria-describedby="hc-occasion-hint hc-occasion-error"
+    >
+      <legend>When would you most want to try Afters or Undrunk?</legend>
+
+      <p class="hc-note" id="hc-occasion-hint">
+        Optional. Pick up to two occasions.
+      </p>
+
+      <label class="hc-choice">
+        <input
+          type="checkbox"
+          name="Halcyon Occasions"
+          value="Big night out"
+          data-occasion
+        >
+        <span>Big night out</span>
+      </label>
+
+      <label class="hc-choice">
+        <input
+          type="checkbox"
+          name="Halcyon Occasions"
+          value="Dinner with friends"
+          data-occasion
+        >
+        <span>Dinner with friends</span>
+      </label>
+
+      <label class="hc-choice">
+        <input
+          type="checkbox"
+          name="Halcyon Occasions"
+          value="Client dinners or work events"
+          data-occasion
+        >
+        <span>Client dinners or work events</span>
+      </label>
+
+      <label class="hc-choice">
+        <input
+          type="checkbox"
+          name="Halcyon Occasions"
+          value="A wedding or celebration"
+          data-occasion
+        >
+        <span>A wedding or celebration</span>
+      </label>
+
+      <label class="hc-choice">
+        <input
+          type="checkbox"
+          name="Halcyon Occasions"
+          value="A couple of drinks midweek"
+          data-occasion
+        >
+        <span>A couple of drinks midweek</span>
+      </label>
+
+      <label class="hc-choice">
+        <input
+          type="checkbox"
+          name="Halcyon Occasions"
+          value="Holiday or travel"
+          data-occasion
+        >
+        <span>Holiday or travel</span>
+      </label>
+
+      <p
+        class="hc-error"
+        id="hc-occasion-error"
+        role="alert"
+        hidden
+      >
+        Please select no more than two occasions.
+      </p>
+    </fieldset>
+
+    <p class="hc-note">
+      By clicking Join the Mailing List, you agree to receive
+      marketing emails from Halcyon. You can unsubscribe at any time.
+    </p>
+
+    <!-- Add your verified privacy-policy link here before publishing. -->
+
+    <button type="submit">Join the Mailing List</button>
+
+    <p class="hc-note" style="margin: 12px 0 0;">
+      * Required.
+    </p>
+    </div></div>
   </div>
+
+  <div class="hc-success" role="status" tabindex="-1" hidden>
+    <p class="hc-eyebrow">Halcyon</p>
+    <h2>Thank you for signing up</h2>
+  </div>
+
+  <p
+    class="hc-error"
+    id="hc-submit-error"
+    role="alert"
+    hidden
+  ></p>
+</form>
+
+<script>
+  (function () {
+    var form = document.getElementById("halcyon-email-signup");
+    if (!form) return;
+
+    var email = form.querySelector('[name="email"]');
+    var emailError = form.querySelector("#hc-email-error");
+    var boxes = Array.from(form.querySelectorAll("[data-occasion]"));
+    var occasionError = form.querySelector("#hc-occasion-error");
+    var submitError = form.querySelector("#hc-submit-error");
+    var button = form.querySelector('button[type="submit"]');
+    var success = form.querySelector(".hc-success");
+    var busy = false;
+    var first = form.querySelector('[name="first_name"]');
+    var last = form.querySelector('[name="last_name"]');
+    var interests = Array.from(form.querySelectorAll('[name="Halcyon Interests"]'));
+    var interestError = form.querySelector("#hc-interest-error");
+    var nameError = form.querySelector("#hc-name-error");
+
+    form.classList.add("hc-js");
+    function openForm() {
+      form.classList.add("is-open");
+    }
+    form.addEventListener("focusin", function (e) {
+      if (e.target.closest(".hc-top")) openForm();
+    });
+    form.addEventListener("click", function (e) {
+      if (e.target.closest(".hc-top")) openForm();
+    });
+
+    function selectedCount() {
+      return boxes.filter(function (box) {
+        return box.checked;
+      }).length;
+    }
+
+    function updateOccasions() {
+      var count = selectedCount();
+
+      boxes.forEach(function (box) {
+        box.disabled = count >= 2 && !box.checked;
+      });
+
+      occasionError.hidden = count <= 2;
+    }
+
+    email.addEventListener("input", function () {
+      emailError.hidden = true;
+      email.removeAttribute("aria-invalid");
+    });
+
+    interests.forEach(function (b) {
+      b.addEventListener("change", function () {
+        if (interests.some(function (x) { return x.checked; })) interestError.hidden = true;
+      });
+    });
+    [first, last].forEach(function (f) {
+      f.addEventListener("input", function () {
+        f.removeAttribute("aria-invalid");
+        if (first.value.trim() && last.value.trim()) nameError.hidden = true;
+      });
+    });
+
+    boxes.forEach(function (box) {
+      box.addEventListener("change", updateOccasions);
+    });
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      if (busy) return;
+
+      email.value = email.value.trim();
+
+      // Checks email format, not inbox existence or ownership.
+      var validEmail =
+        email.validity.valid &&
+        /^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)+$/.test(email.value);
+
+      emailError.hidden = validEmail;
+
+      if (!validEmail) {
+        email.setAttribute("aria-invalid", "true");
+        email.focus();
+        return;
+      }
+
+      email.removeAttribute("aria-invalid");
+
+      first.value = first.value.trim();
+      last.value = last.value.trim();
+      var namesOk = first.value !== "" && last.value !== "";
+      nameError.hidden = namesOk;
+      first.setAttribute("aria-invalid", first.value ? "false" : "true");
+      last.setAttribute("aria-invalid", last.value ? "false" : "true");
+      if (!namesOk) {
+        (first.value ? last : first).focus();
+        return;
+      }
+
+      var interestOk = interests.some(function (b) { return b.checked; });
+      interestError.hidden = interestOk;
+      if (!interestOk) {
+        interests[0].focus();
+        return;
+      }
+
+      // Zero selections is allowed.
+      if (selectedCount() > 2) {
+        occasionError.hidden = false;
+        boxes[0].focus();
+        return;
+      }
+
+      busy = true;
+      button.disabled = true;
+      button.textContent = "Signing up…";
+      form.setAttribute("aria-busy", "true");
+      submitError.hidden = true;
+
+      var controller = new AbortController();
+      var timeout = setTimeout(function () {
+        controller.abort();
+      }, 20000);
+
+      try {
+        var response = await fetch(form.dataset.ajaxSubmit, {
+          method: "POST",
+          body: new URLSearchParams(new FormData(form)),
+          headers: {
+            Accept: "application/json"
+          },
+          signal: controller.signal
+        });
+
+        if (!response.ok) {
+          throw new Error("Request failed");
+        }
+
+        var result = await response.json();
+
+        if (result.success !== true) {
+          throw new Error("Signup rejected");
+        }
+
+        // Only show thanks after a successful Klaviyo response.
+        form.querySelector(".hc-inputs").hidden = true;
+        success.hidden = false;
+        success.focus();
+
+        form.reset();
+        updateOccasions();
+      } catch (error) {
+        submitError.textContent =
+          "We could not confirm your signup. Please try again. " +
+          "If this continues, contact hello@byhalcyon.com.";
+
+        submitError.hidden = false;
+      } finally {
+        clearTimeout(timeout);
+        busy = false;
+        button.disabled = false;
+        button.textContent = "Join the Mailing List";
+        form.removeAttribute("aria-busy");
+      }
+    });
+
+    updateOccasions();
+  })();
+</script>
 </section>
 
-<!-- PILLARS -->
-<section class="pillars">
-  <div class="pillars-inner">
-    <div class="pillar">
-      <div class="pillar-num">01</div>
-      <h3>Afters</h3>
-      <p>An on-demand elixir that dramatically accelerates alcohol clearance while protecting the liver.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">02</div>
-      <h3>Always</h3>
-      <p>A daily companion that strengthens the liver's natural resilience during medication use.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">03</div>
-      <h3>Longevity</h3>
-      <p>A full wellness suite designed to extend liver health, and with it, healthy lifespan.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-curves" aria-hidden="true">
-    <svg viewBox="0 0 1400 600" preserveAspectRatio="none" fill="none" width="100%" height="100%">
-      <path d="M -50 450 Q 300 300 700 400 T 1450 350" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
-      <path d="M -50 500 Q 300 350 700 450 T 1450 400" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-      <path d="M -50 550 Q 300 400 700 500 T 1450 450" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-    </svg>
-  </div>
-
-  <div class="contact-inner">
-    <div class="section-label" style="color: rgba(255,255,255,0.7);">Let's talk</div>
-    <h2 class="display">Partner with <em>Halcyon</em>.</h2>
-    <p>Whether you're a distributor, investor, clinician, or curious soul — we'd love to hear from you.</p>
-    <a href="mailto:hello@byhalcyon.com" class="cta">
-      Contact us
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="5" y1="12" x2="19" y2="12"/>
-        <polyline points="12 5 19 12 12 19"/>
-      </svg>
-    </a>
-    <span class="contact-email">hello@byhalcyon.com</span>
-  </div>
-</section>
-
+<div class="rule"></div>
 <footer>
-  © 2026 Halcyon Wellness · Changing the face of consumer wellness and recovery
+  <div class="footer-row">
+    <span class="label">© 2026 Halcyon Wellness</span>
+    <span class="label">hello@byhalcyon.com</span>
+  </div>
+  <p class="disclaimer">Halcyon is a pre-brand, pre-revenue company.</p>
 </footer>
 
+<script>
+  (function () {
+    const vision = document.querySelector('.vision');
+    if (!('IntersectionObserver' in window)) {
+      vision.classList.add('is-visible');
+      return;
+    }
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          vision.classList.add('is-visible');
+          observer.unobserve(vision);
+        }
+      });
+    }, { threshold: 0.12 });
+    observer.observe(vision);
+  })();
+</script>
+<noscript><style>.vision{opacity:1;transform:none}</style></noscript>
 </body>
 </html>
+</body></html>
